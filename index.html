@@ -317,6 +317,32 @@ section{padding:100px 5%}
 .cert-icon{font-size:32px;margin-bottom:8px}
 .cert-label{font-size:11px;color:var(--gray);letter-spacing:1px;text-transform:uppercase;line-height:1.4}
 
+/* ── TEAM ── */
+.team-section{background:var(--nude2);padding:80px 5%}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:60px}
+.team-card{
+  background:#fff;padding:36px 28px;text-align:center;
+  border:1px solid rgba(194,81,106,.08);
+  transition:box-shadow .25s,transform .25s;
+}
+.team-card:hover{box-shadow:0 16px 48px rgba(0,0,0,.07);transform:translateY(-4px)}
+.team-photo{
+  width:100px;height:100px;border-radius:50%;
+  object-fit:cover;border:3px solid rgba(194,81,106,.15);
+  margin:0 auto 20px;display:block;
+}
+.team-level{
+  display:inline-block;
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--rose);border:1px solid rgba(194,81,106,.3);
+  padding:5px 14px;border-radius:2px;margin-bottom:12px;
+}
+.team-name{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--dark);margin-bottom:8px}
+.team-spec{font-size:12px;color:var(--gray);line-height:1.6;margin-bottom:20px}
+.team-price{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--rose)}
+.team-price-label{font-size:11px;color:var(--gray);letter-spacing:1px;margin-top:2px}
+@media(max-width:768px){.team-grid{grid-template-columns:1fr}}
+
 /* ── PRICE ── */
 .price-bg{background:var(--nude2)}
 .price-cols{
@@ -667,6 +693,48 @@ footer{
   </div>
 </section>
 
+<!-- TEAM -->
+<section class="team-section">
+  <div class="section-tag reveal"><div class="tag-line"></div><div class="tag-text">Команда</div></div>
+  <h2 class="section-title reveal">Наші <em>майстри</em></h2>
+  <p class="section-sub reveal">Три рівні — обирайте під свій запит і бюджет</p>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <img class="team-photo"
+        src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80&auto=format&fit=crop"
+        alt="Майстер Ксенія"
+        onerror="this.src='https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=200&q=80&fit=crop&h=200'">
+      <div class="team-level">Майстер</div>
+      <div class="team-name">Ксенія Р.</div>
+      <div class="team-spec">Манікюр · Педикюр · Дизайн нігтів<br>Стаж 3 роки</div>
+      <div class="team-price">від 500 ₴</div>
+      <div class="team-price-label">за манікюр з покриттям</div>
+    </div>
+    <div class="team-card reveal">
+      <img class="team-photo"
+        src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80&auto=format&fit=crop"
+        alt="Топ-майстер Діана"
+        onerror="this.src='https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=200&q=80&fit=crop&h=200'">
+      <div class="team-level" style="background:rgba(194,81,106,.06)">Топ-майстер</div>
+      <div class="team-name">Діана К.</div>
+      <div class="team-spec">Нарощування · Японський манікюр · Корекція<br>Стаж 6 років</div>
+      <div class="team-price">від 700 ₴</div>
+      <div class="team-price-label">за манікюр з покриттям</div>
+    </div>
+    <div class="team-card reveal">
+      <img class="team-photo"
+        src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=200&q=80&auto=format&fit=crop"
+        alt="Арт-майстер Марина"
+        onerror="this.src='https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=200&q=80&fit=crop&h=200'">
+      <div class="team-level" style="background:rgba(194,81,106,.1);color:#8b2342">Арт-майстер</div>
+      <div class="team-name">Марина В.</div>
+      <div class="team-spec">Складний арт · Ламінування · Педикюр-SPA<br>Стаж 9 років</div>
+      <div class="team-price">від 950 ₴</div>
+      <div class="team-price-label">за манікюр з покриттям</div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICE -->
 <section class="price-bg" id="price">
   <div class="section-tag reveal"><div class="tag-line"></div><div class="tag-text">Прайс-лист</div></div>
@@ -697,14 +765,25 @@ footer{
         <div class="price-row"><span class="price-name">Комплекс Манікюр + Педикюр</span><span class="price-dots"></span><span class="price-val">1100 ₴</span></div>
       </div>
       <div class="price-cat reveal" style="margin-top:48px">
-        <div class="price-cat-head">🎨 Дизайн</div>
+        <div class="price-cat-head">🎨 Дизайн нігтів</div>
         <div class="price-row"><span class="price-name">Омбре / Градієнт</span><span class="price-dots"></span><span class="price-val">від 150 ₴</span></div>
         <div class="price-row"><span class="price-name">Стемпінг / Фольга</span><span class="price-dots"></span><span class="price-val">від 100 ₴</span></div>
         <div class="price-row"><span class="price-name">Стрази / Декор</span><span class="price-dots"></span><span class="price-val">від 50 ₴</span></div>
         <div class="price-row"><span class="price-name">Малюнок (1 ніготь)</span><span class="price-dots"></span><span class="price-val">від 80 ₴</span></div>
-        <div class="price-row"><span class="price-name">Складний арт (1 ніготь)</span><span class="price-dots"></span><span class="price-val">від 200 ₴</span></div>
+        <div class="price-row"><span class="price-name">Складний арт-дизайн</span><span class="price-dots"></span><span class="price-val">від 200 ₴</span></div>
+      </div>
+      <div class="price-cat reveal" style="margin-top:48px">
+        <div class="price-cat-head">👁️ Брови та вії</div>
+        <div class="price-row"><span class="price-name">Корекція брів воском</span><span class="price-dots"></span><span class="price-val">200 ₴</span></div>
+        <div class="price-row"><span class="price-name">Фарбування брів</span><span class="price-dots"></span><span class="price-val">250 ₴</span></div>
+        <div class="price-row"><span class="price-name">Ламінування брів</span><span class="price-dots"></span><span class="price-val">500 ₴</span></div>
+        <div class="price-row"><span class="price-name">Ламінування вій</span><span class="price-dots"></span><span class="price-val">550 ₴</span></div>
+        <div class="price-row"><span class="price-name">Корекція + фарбування</span><span class="price-dots"></span><span class="price-val">400 ₴</span></div>
       </div>
     </div>
+  </div>
+  <div style="text-align:center;margin-top:48px">
+    <a href="https://t.me/znahidkawow" class="btn-rose" style="display:inline-flex;align-items:center;gap:10px;padding:16px 36px;font-size:15px">📲 Записатись та уточнити ціну</a>
   </div>
 </section>
 
