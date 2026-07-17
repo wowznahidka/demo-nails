@@ -286,6 +286,54 @@ section{padding:100px 5%}
 }
 .lb-close:hover{opacity:1}
 
+/* ── PALETTE PICKER ── */
+.palette-bg{background:var(--nude2)}
+.palette-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));
+  gap:28px 20px;margin-top:56px;
+}
+.swatch{
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  cursor:pointer;background:none;border:none;font-family:inherit;padding:6px;
+}
+.swatch-chip{
+  width:60px;height:60px;border-radius:50%;
+  border:3px solid transparent;
+  box-shadow:0 4px 14px rgba(0,0,0,.08),inset 0 0 0 1px rgba(0,0,0,.06);
+  transition:transform .25s cubic-bezier(.2,1,.3,1),border-color .25s,box-shadow .25s;
+}
+.swatch:hover .swatch-chip{transform:scale(1.08)}
+.swatch.active .swatch-chip{
+  transform:scale(1.15);border-color:var(--rose);
+  box-shadow:0 10px 30px rgba(194,81,106,.35),inset 0 0 0 1px rgba(0,0,0,.06);
+}
+.swatch-name{
+  font-size:11.5px;color:var(--gray);letter-spacing:.3px;text-align:center;
+  transition:color .2s;line-height:1.3;
+}
+.swatch.active .swatch-name{color:var(--rose);font-weight:600}
+.palette-preview{
+  margin-top:64px;padding:36px 40px;background:#fff;
+  border:1px solid rgba(194,81,106,.12);
+  display:flex;align-items:center;gap:28px;flex-wrap:wrap;
+  transition:background .3s;
+}
+.palette-preview-chip{
+  width:56px;height:56px;border-radius:50%;flex-shrink:0;
+  border:3px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.12),inset 0 0 0 1px rgba(0,0,0,.06);
+  background:var(--nude);transition:background .3s;
+}
+.palette-preview-text{
+  flex:1;font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--dark);
+  min-width:220px;line-height:1.35;
+}
+.palette-preview-text em{font-style:italic;color:var(--rose)}
+@media(max-width:768px){
+  .palette-preview{flex-direction:column;text-align:center;padding:32px 24px}
+  .palette-grid{grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:22px 14px}
+  .swatch-chip{width:50px;height:50px}
+}
+
 /* ── MASTER ── */
 .master-inner{
   display:grid;grid-template-columns:420px 1fr;gap:80px;align-items:start;
@@ -547,6 +595,7 @@ footer{
   <a href="#services" onclick="closeMobileMenu()">Послуги</a>
   <a href="#master" onclick="closeMobileMenu()">Майстер</a>
   <a href="#gallery" onclick="closeMobileMenu()">Роботи</a>
+  <a href="#palette" onclick="closeMobileMenu()">Відтінки</a>
   <a href="#price" onclick="closeMobileMenu()">Прайс</a>
   <a href="#contacts" onclick="closeMobileMenu()">Контакти</a>
   <a href="https://telegram.me/znahidkawow" class="btn-rose nav-cta" onclick="closeMobileMenu()">💅 Записатись</a>
@@ -559,6 +608,7 @@ footer{
     <li><a href="#services">Послуги</a></li>
     <li><a href="#master">Майстер</a></li>
     <li><a href="#gallery">Роботи</a></li>
+    <li><a href="#palette">Відтінки</a></li>
     <li><a href="#price">Прайс</a></li>
     <li><a href="#contacts">Контакти</a></li>
   </ul>
@@ -660,6 +710,128 @@ footer{
     </div>
   </div>
 </section>
+
+<!-- PALETTE PICKER -->
+<section class="palette-bg" id="palette">
+  <div class="section-tag reveal"><div class="tag-line"></div><div class="tag-text">Підбір відтінку</div></div>
+  <h2 class="section-title reveal">Підбери свій <em>відтінок</em></h2>
+  <p class="section-sub reveal">Не можеш визначитись з кольором? Тицяй по палітрі — обери те, що відгукується, і одразу запишись саме на нього</p>
+  <div class="palette-grid" id="paletteGrid">
+    <div class="swatch reveal" onclick="selectShade(this,'#C41E3A','Червоний класик')">
+      <div class="swatch-chip" style="background:#C41E3A"></div>
+      <div class="swatch-name">Червоний класик</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#6E1423','Бордо')">
+      <div class="swatch-chip" style="background:#6E1423"></div>
+      <div class="swatch-name">Бордо</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#9E1B32','Вишневий')">
+      <div class="swatch-chip" style="background:#9E1B32"></div>
+      <div class="swatch-name">Вишневий</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#C1653B','Теракота')">
+      <div class="swatch-chip" style="background:#C1653B"></div>
+      <div class="swatch-name">Теракота</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#F2795D','Кораловий')">
+      <div class="swatch-chip" style="background:#F2795D"></div>
+      <div class="swatch-name">Кораловий</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#E8C4A2','Нюд')">
+      <div class="swatch-chip" style="background:#E8C4A2"></div>
+      <div class="swatch-name">Нюд</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#7B5541','Мокко')">
+      <div class="swatch-chip" style="background:#7B5541"></div>
+      <div class="swatch-name">Мокко</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#3E2723','Шоколад')">
+      <div class="swatch-chip" style="background:#3E2723"></div>
+      <div class="swatch-name">Шоколад</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#D2B48C','Капучіно')">
+      <div class="swatch-chip" style="background:#D2B48C"></div>
+      <div class="swatch-name">Капучіно</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#F5EFE6','Мілк')">
+      <div class="swatch-chip" style="background:#F5EFE6"></div>
+      <div class="swatch-name">Мілк</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#E9DCC3','Шампань')">
+      <div class="swatch-chip" style="background:#E9DCC3"></div>
+      <div class="swatch-name">Шампань</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#17161A','Чорний оніс')">
+      <div class="swatch-chip" style="background:#17161A"></div>
+      <div class="swatch-name">Чорний оніс</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#4B4B50','Графіт')">
+      <div class="swatch-chip" style="background:#4B4B50"></div>
+      <div class="swatch-name">Графіт</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'linear-gradient(135deg,#eef0f1,#b8bec2 50%,#dfe2e4)','Хром')">
+      <div class="swatch-chip" style="background:linear-gradient(135deg,#eef0f1,#b8bec2 50%,#dfe2e4)"></div>
+      <div class="swatch-name">Хром</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'linear-gradient(135deg,#e9d9a8,#c9a96e 50%,#a98a52)','Золото')">
+      <div class="swatch-chip" style="background:linear-gradient(135deg,#e9d9a8,#c9a96e 50%,#a98a52)"></div>
+      <div class="swatch-name">Золото</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#1B2A4A','Темна ніч')">
+      <div class="swatch-chip" style="background:#1B2A4A"></div>
+      <div class="swatch-name">Темна ніч</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#A9CBE8','Небесний')">
+      <div class="swatch-chip" style="background:#A9CBE8"></div>
+      <div class="swatch-name">Небесний</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#C9B7DE','Лаванда')">
+      <div class="swatch-chip" style="background:#C9B7DE"></div>
+      <div class="swatch-name">Лаванда</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#D6336C','Фуксія')">
+      <div class="swatch-chip" style="background:#D6336C"></div>
+      <div class="swatch-name">Фуксія</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#F3C6D0','Пудровий')">
+      <div class="swatch-chip" style="background:#F3C6D0"></div>
+      <div class="swatch-name">Пудровий</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#A9B48E','Шавлія')">
+      <div class="swatch-chip" style="background:#A9B48E"></div>
+      <div class="swatch-name">Шавлія</div>
+    </div>
+    <div class="swatch reveal" onclick="selectShade(this,'#A9DBC9','М\'ята')">
+      <div class="swatch-chip" style="background:#A9DBC9"></div>
+      <div class="swatch-name">М'ята</div>
+    </div>
+  </div>
+  <div class="palette-preview reveal" id="palettePreview">
+    <div class="palette-preview-chip" id="previewChip"></div>
+    <div class="palette-preview-text" id="previewText">Обери відтінок вище — і побачиш його тут 👆</div>
+    <a href="#" id="previewCta" class="btn-rose" style="display:none;white-space:nowrap">📲 Записатись на цей відтінок</a>
+  </div>
+</section>
+
+<script>
+function selectShade(el, color, name) {
+  document.querySelectorAll('#paletteGrid .swatch').forEach(function(s) { s.classList.remove('active'); });
+  el.classList.add('active');
+
+  var chip = document.getElementById('previewChip');
+  chip.style.background = color;
+
+  var text = document.getElementById('previewText');
+  text.innerHTML = 'Обрано: <em>' + name + '</em> — чудовий вибір! Запишемось на цей відтінок?';
+
+  var cta = document.getElementById('previewCta');
+  cta.style.display = 'inline-flex';
+  var msg = encodeURIComponent('Вітаю! Хочу записатись на манікюр у відтінку «' + name + '» 💅');
+  cta.href = 'https://telegram.me/znahidkawow?text=' + msg;
+
+  el.scrollIntoView({block: 'nearest', behavior: 'smooth', inline: 'center'});
+}
+</script>
 
 <!-- MASTER -->
 <section id="master">
