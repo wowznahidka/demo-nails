@@ -109,6 +109,7 @@ nav.scrolled .burger span{background:var(--dark)}
   z-index:1;
 }
 .hero-img-bg img{width:100%;height:100%;object-fit:cover;opacity:.7}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:.85}
 .hero-img-bg::after{
   content:'';position:absolute;inset:0;
   background:linear-gradient(to right,var(--dark) 0%,transparent 50%);
@@ -571,6 +572,9 @@ footer{
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-img-bg">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1200&q=90&auto=format&fit=crop">
+      <source src="https://videos.pexels.com/video-files/3997858/3997858-hd_1366_720_50fps.mp4" type="video/mp4">
+    </video>
     <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1200&q=90&auto=format&fit=crop"
          alt="Манікюр"
          onerror="this.src='https://images.unsplash.com/photo-1614026480209-cd9934144671?w=1200&q=90'">
@@ -624,6 +628,7 @@ footer{
     <div class="srv reveal"><span class="srv-icon">🦶</span><div class="srv-name">Педикюр апаратний</div><div class="srv-desc">Ретельна обробка, шкіра м'яка, п'яти гладкі. З покриттям або без.</div><div class="srv-bottom"><div class="srv-price">від 700 ₴</div><div class="srv-time">75 хв</div></div></div>
     <div class="srv reveal"><span class="srv-icon">🎨</span><div class="srv-name">Дизайн нігтів</div><div class="srv-desc">Омбре, стемпінг, фольга, кашемір, стрази, геометрія, квіти — будь-яка ідея.</div><div class="srv-bottom"><div class="srv-price">від 150 ₴</div><div class="srv-time">+30 хв</div></div></div>
     <div class="srv reveal"><span class="srv-icon">👑</span><div class="srv-name">Комплекс</div><div class="srv-desc">Манікюр + Педикюр зі знижкою. Повний догляд за один комфортний візит.</div><div class="srv-bottom"><div class="srv-price">від 1100 ₴</div><div class="srv-time">2.5–3 год</div></div></div>
+    <div class="srv reveal"><span class="srv-icon">👁️</span><div class="srv-name">Брови та вії</div><div class="srv-desc">Корекція, фарбування, ламінування брів і вій. Погляд виразніший без щоденного туш і олівця.</div><div class="srv-bottom"><div class="srv-price">від 200 ₴</div><div class="srv-time">30–60 хв</div></div></div>
   </div>
 </section>
 
@@ -665,14 +670,14 @@ footer{
            alt="Nail Master"
            onerror="this.src='https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=85&fit=crop&h=750'">
       <div class="master-badge">
-        <div class="master-badge-num">5+</div>
+        <div class="master-badge-num">7+</div>
         <div class="master-badge-label">Років у нейл-індустрії</div>
       </div>
     </div>
     <div class="master-content">
       <div class="section-tag reveal"><div class="tag-line"></div><div class="tag-text">Про майстра</div></div>
       <h2 class="section-title reveal">Ксенія <em>Романенко</em></h2>
-      <p class="master-about reveal">Nail-майстер з Києва, 7 років у нейл-індустрії. Спеціалізуюсь на японському манікюрі, апаратному педикюрі та нарощуванні. Постійно навчаюсь — щоб результат тримався якомога довше і виглядавездорово.</p>
+      <p class="master-about reveal">Nail-майстер з Києва, 7 років у нейл-індустрії. Спеціалізуюсь на японському манікюрі, апаратному педикюрі та нарощуванні. Постійно навчаюсь — щоб результат тримався якомога довше і виглядав здорово. За ці роки з одиначки виросла в невелику команду — і сьогодні я очолюю команду з 3 майстринь, які поділяють мої стандарти якості та стерильності.</p>
       <p class="master-about reveal">Записатись просто — пишеш в Telegram @kiara_nailskyiv, обираємо зручний час і за день до процедури прийде нагадування. Без черг і очікувань.</p>
       <div class="tags-wrap reveal">
         <span class="tag-pill">Японський манікюр</span>
@@ -706,7 +711,7 @@ footer{
         onerror="this.src='https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=200&q=80&fit=crop&h=200'">
       <div class="team-level">Майстер</div>
       <div class="team-name">Ксенія Р.</div>
-      <div class="team-spec">Манікюр · Педикюр · Дизайн нігтів<br>Стаж 3 роки</div>
+      <div class="team-spec">Манікюр · Педикюр · Дизайн нігтів<br>Стаж 7 років</div>
       <div class="team-price">від 500 ₴</div>
       <div class="team-price-label">за манікюр з покриттям</div>
     </div>
