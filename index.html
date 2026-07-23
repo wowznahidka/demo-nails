@@ -335,6 +335,33 @@ section{padding:100px 5%}
   .swatch-chip{width:50px;height:50px}
 }
 
+/* ── CONFIGURATOR ── */
+.cfg-section{background:#fff;padding:100px 5%}
+.cfg-groups{display:flex;flex-direction:column;gap:32px;max-width:700px;margin:48px auto 0}
+.cfg-group{display:flex;flex-direction:column;gap:12px}
+.cfg-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
+.cfg-chips{display:flex;flex-wrap:wrap;gap:10px}
+.cfg-chip{
+  padding:10px 20px;border-radius:100px;border:1.5px solid #e8e0dc;background:#fff;
+  font-size:13px;font-weight:500;color:var(--dark);cursor:pointer;transition:all .2s;
+  font-family:inherit;
+}
+.cfg-chip:hover{border-color:var(--rose);color:var(--rose)}
+.cfg-chip.active{background:var(--rose);border-color:var(--rose);color:#fff}
+.cfg-result{
+  max-width:700px;margin:48px auto 0;
+  background:var(--nude2);border-radius:20px;padding:28px 32px;
+  display:flex;flex-direction:column;gap:20px;align-items:flex-start;
+}
+.cfg-result-badge{
+  font-size:14px;color:var(--gray);line-height:1.7;
+  padding:12px 16px;background:#fff;border-radius:12px;width:100%;box-sizing:border-box;
+}
+@media(max-width:768px){
+  .cfg-section{padding:72px 5%}
+  .cfg-result{padding:20px}
+}
+
 /* ── MASTER ── */
 .master-inner{
   display:grid;grid-template-columns:420px 1fr;gap:80px;align-items:start;
@@ -831,6 +858,84 @@ function selectShade(el, color, name) {
 
   el.scrollIntoView({block: 'nearest', behavior: 'smooth', inline: 'center'});
 }
+</script>
+
+<!-- CONFIGURATOR -->
+<section class="cfg-section" id="booking-config">
+  <div class="section-tag reveal"><div class="tag-line"></div><div class="tag-text">Запис</div></div>
+  <h2 class="section-title reveal">Підбери свій <em>візит</em></h2>
+  <p class="section-sub reveal">Обери параметри — я підготуюсь заздалегідь і зустріч пройде швидко і комфортно</p>
+  <div class="cfg-groups">
+    <div class="cfg-group reveal">
+      <div class="cfg-label">Послуга</div>
+      <div class="cfg-chips" data-group="service">
+        <button class="cfg-chip active" data-val="Манікюр">💅 Манікюр</button>
+        <button class="cfg-chip" data-val="Педикюр">🦶 Педикюр</button>
+        <button class="cfg-chip" data-val="Манікюр + педикюр">✨ Обидва</button>
+      </div>
+    </div>
+    <div class="cfg-group reveal">
+      <div class="cfg-label">Дизайн</div>
+      <div class="cfg-chips" data-group="design">
+        <button class="cfg-chip" data-val="З дизайном">🎨 Хочу дизайн</button>
+        <button class="cfg-chip active" data-val="Чисте покриття">✨ Чисте покриття</button>
+      </div>
+    </div>
+    <div class="cfg-group reveal">
+      <div class="cfg-label">Тип манікюру</div>
+      <div class="cfg-chips" data-group="type">
+        <button class="cfg-chip active" data-val="Класичний">💆 Класичний</button>
+        <button class="cfg-chip" data-val="Гігієнічний">🧼 Гігієнічний</button>
+      </div>
+    </div>
+    <div class="cfg-group reveal">
+      <div class="cfg-label">Укріплення</div>
+      <div class="cfg-chips" data-group="strength">
+        <button class="cfg-chip" data-val="З укріпленням">💪 З укріпленням</button>
+        <button class="cfg-chip active" data-val="Без укріплення">Без укріплення</button>
+      </div>
+    </div>
+    <div class="cfg-group reveal">
+      <div class="cfg-label">Довжина нігтів</div>
+      <div class="cfg-chips" data-group="length">
+        <button class="cfg-chip active" data-val="Своя довжина">✂️ Своя довжина</button>
+        <button class="cfg-chip" data-val="Нарощування">💎 Нарощування</button>
+      </div>
+    </div>
+  </div>
+  <div class="cfg-result reveal" id="cfgResult">
+    <div class="cfg-result-badge" id="cfgBadge">Манікюр · Чисте покриття · Класичний · Без укріплення · Своя довжина</div>
+    <a href="#" class="btn-rose" id="cfgCta">📲 Записатись з цими побажаннями</a>
+  </div>
+</section>
+<script>
+(function(){
+  var cfg = {};
+  document.querySelectorAll('.cfg-chips').forEach(function(group){
+    var g = group.dataset.group;
+    var active = group.querySelector('.cfg-chip.active');
+    if(active) cfg[g] = active.dataset.val;
+    group.querySelectorAll('.cfg-chip').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        group.querySelectorAll('.cfg-chip').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        cfg[g] = btn.dataset.val;
+        updateCfg();
+      });
+    });
+  });
+  function updateCfg(){
+    var parts = [cfg.service, cfg.design, cfg.type, cfg.strength, cfg.length].filter(Boolean);
+    var badge = document.getElementById('cfgBadge');
+    if(badge) badge.textContent = parts.join(' · ');
+    var cta = document.getElementById('cfgCta');
+    if(cta){
+      var msg = 'Привіт! Хочу записатись 💅\n' + parts.join('\n');
+      cta.href = 'https://telegram.me/znahidkawow?text=' + encodeURIComponent(msg);
+    }
+  }
+  updateCfg();
+})();
 </script>
 
 <!-- MASTER -->
